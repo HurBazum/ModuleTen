@@ -12,7 +12,9 @@ class Calculator : ISummator
         //-2 147 483 648
         Console.WriteLine("Введите несколько чисел(два, например), сумму которых хотите узнать, через пробел:");
         string[] numbers = Console.ReadLine().Split(" ");
+
         int result;// непосредственно результат сложения
+
         // для случаев, когда введены числа сумма которых не помещается в int, но нет ошибки e.g.
         // int.MinValue + int.MinValue = 0 - вывод программы
         BigInteger bigResult = new(0); 
