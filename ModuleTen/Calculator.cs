@@ -9,7 +9,6 @@ class Calculator : ISummator
     }
     public void Sum()
     {
-        //-2 147 483 648
         Console.WriteLine("Введите несколько чисел(два, например), сумму которых хотите узнать, через пробел:");
         string[] numbers = Console.ReadLine().Split(" ");
 
@@ -30,7 +29,7 @@ class Calculator : ISummator
                 {
                     if (i != 0)// если число отрицательное - выводится операция вычитания, иначе - сложения
                     {
-                        if (a <= 0 && numbers[i].Contains('-'))
+                        if (numbers[i].Contains('-'))
                         {
                             numbers[i] = string.Concat(" - ", (a * (-1)).ToString());
                         }

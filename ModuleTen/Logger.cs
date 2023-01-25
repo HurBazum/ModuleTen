@@ -15,7 +15,8 @@
     public void Repeat()
     {
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine("\nЧтобы закончить нажмите - Escape! Иначе - любую клавишу!\nДля того чтобы очистить консоль - нажмите Backspace!\n");
+        Console.WriteLine("\nЧтобы закончить нажмите - Escape! Иначе - любую клавишу!\n" +
+            "Для того чтобы очистить консоль - нажмите Backspace!\n");
         Console.ResetColor();
     }
 }

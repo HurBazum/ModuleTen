@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-class Program
+﻿class Program
 {
     static ILogger Logger { get; set; }
     static void Main(string[] args)
