@@ -10,10 +10,16 @@ class Program
         while (true)
         {
             calculator.Sum();
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("\nЧтобы закончить нажмите - Escape!\n");
-            Console.ResetColor();
-            if (Console.ReadKey().Key == ConsoleKey.Escape)
+            ConsoleKeyInfo key = Console.ReadKey();
+            if(key.Key != ConsoleKey.Escape)
+            {
+                switch(key.Key) 
+                {
+                    case ConsoleKey.Backspace: Console.Clear();break;
+                    default: Console.CursorLeft = 0; break;
+                }
+            }
+            else
             {
                 break;
             }

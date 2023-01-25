@@ -13,17 +13,36 @@ class Calculator : ISummator
         Console.WriteLine("Введите несколько чисел(два, например), сумму которых хотите узнать, через пробел:");
         string[] numbers = Console.ReadLine().Split(" ");
 
-        int result;// непосредственно результат сложения
+        Int64 result;// непосредственно результат сложения
 
         // для случаев, когда введены числа сумма которых не помещается в int, но нет ошибки e.g.
         // int.MinValue + int.MinValue = 0 - вывод программы
         BigInteger bigResult = new(0); 
+
+        // выполняются небольшие преобразования элементов массива,
+        // вычисляются переменные  result and bigResult
+        // выводится результат на консоль
         for (int i = 0; i < numbers.Length; i++)
         {
             try
             {
                 if(BigInteger.TryParse(numbers[i], out BigInteger a))
                 {
+                    if (i != 0)// если число отрицательное - выводится операция вычитания, иначе - сложения
+                    {
+                        if (a <= 0 && numbers[i].Contains('-'))
+                        {
+                            numbers[i] = string.Concat(" - ", (a * (-1)).ToString());
+                        }
+                        else
+                        {
+                            numbers[i] = string.Concat(" + ", a.ToString());
+                        }
+                    }
+                    else
+                    {
+                        numbers[i] = a.ToString();// если число введено с нолями впереди, e.g. -002
+                    }
                     if (bigResult == 0)
                     {
                         bigResult = a;
@@ -39,13 +58,15 @@ class Calculator : ISummator
                 }
                 if (i == numbers.Length - 1)
                 {
-                    result = (int)bigResult;
-                    Logger.Event($"{string.Join(" + ", numbers)} = {result}");
+                    result = (Int64)bigResult;
+                    Logger.Event($"{string.Concat(numbers)} = {result}");
+                    Logger.Repeat();
                 }
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e.Message); 
+                Logger.Repeat();
                 break;
             }
         }

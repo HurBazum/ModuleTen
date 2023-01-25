@@ -2,4 +2,5 @@
 {
     void Event(string message);
     void Error(string message);
+    void Repeat();
 }
