@@ -1,10 +1,8 @@
 ﻿class Program
 {
-    static ILogger Logger { get; set; }
     static void Main(string[] args)
     {
-        Logger = new Logger();
-        Calculator calculator = new(Logger);
+        Calculator calculator = new(new Logger());
         while (true)
         {
             calculator.Sum();

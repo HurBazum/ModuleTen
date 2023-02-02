@@ -14,7 +14,7 @@ class Calculator : ISummator
 
         Int64 result;// непосредственно результат сложения
 
-        // для случаев, когда введены числа сумма которых не помещается в int, но нет ошибки e.g.
+        // для случаев, когда введены числа сумма которых не помещается в Int64, но нет ошибки e.g.
         // int.MinValue + int.MinValue = 0 - вывод программы
         BigInteger bigResult = new(0); 
 
@@ -53,7 +53,8 @@ class Calculator : ISummator
                 }
                 else
                 {
-                    throw new FormatException();
+                    // на случай, если случайно после последнего числа был поставлен пробел
+                    throw new FormatException($"Ошибка в {i} позиции, там указано:\"{numbers[i]}\"; Это не число!");
                 }
                 if (i == numbers.Length - 1)
                 {
